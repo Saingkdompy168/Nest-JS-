@@ -1,6 +1,16 @@
-export class CreatProductDTO{
-        readonly id:string;
-        readonly name:string;
-        readonly qty:number;
-        readonly price:number;
+import { IsString, IsInt, IsNotEmpty, IsNumber } from 'class-validator';
+
+export class CreatProductDTO {
+  @IsString()
+  @IsNotEmpty()
+  readonly id: string;
+  @IsString()
+  @IsNotEmpty()
+  readonly name: string;
+  @IsInt()
+  @IsNotEmpty()
+  readonly qty: number;
+  @IsNotEmpty()
+  @IsNumber()
+  readonly price: number;
 }
