@@ -1,10 +1,21 @@
 import { Product } from './interfaces/product.interface';
 import { ProductsService } from './products.service';
-import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  HttpException,
+  HttpStatus,
+  UseFilters,
+} from '@nestjs/common';
 import { CreatProductDTO } from './dto/create-product.dto';
-import { promises } from 'dns';
+import { HttpExcepionFilter } from './common/filter/http-exception.filter';
 
 @Controller('products')
+@UseFilters(HttpExcepionFilter)
 export class ProductsController {
   constructor(private productsService: ProductsService) {}
   @Post()
@@ -24,5 +35,6 @@ export class ProductsController {
   @Delete(':id')
   async delete(@Param() param): Promise<Product[]> {
     return this.productsService.delete(param.id);
+    // throw new HttpException('Somthing went worng...!', HttpStatus.BAD_REQUEST);
   }
 }

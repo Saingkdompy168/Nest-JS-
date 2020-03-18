@@ -1,16 +1,16 @@
 import { IsString, IsInt, IsNotEmpty, IsNumber } from 'class-validator';
 
 export class CreatProductDTO {
-  @IsString()
-  @IsNotEmpty()
+  // @IsString()
+  // @IsNotEmpty()
   readonly id: string;
-  @IsString()
-  @IsNotEmpty()
+  // @IsString()
+  // @IsNotEmpty()
   readonly name: string;
-  @IsInt()
-  @IsNotEmpty()
+  // @IsInt()
+  // @IsNotEmpty()
   readonly qty: number;
-  @IsNotEmpty()
-  @IsNumber()
+  // @IsNotEmpty()
+  // @IsNumber()
   readonly price: number;
 }
