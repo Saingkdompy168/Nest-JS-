@@ -7,7 +7,7 @@ import {
 
 import { Request, Response } from 'express';
 @Catch(HttpException)
-export class HttpExcepionFilter implements ExceptionFilter {
+export class HttpExceptionFilter implements ExceptionFilter {
   catch(exception: HttpException, host: ArgumentsHost) {
     console.log('exception', exception);
     console.log('host', host);

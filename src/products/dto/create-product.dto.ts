@@ -7,7 +7,7 @@ export class CreatProductDTO {
   // @IsString()
   // @IsNotEmpty()
   readonly name: string;
-  // @IsInt()
+  // @IsInt() 
   // @IsNotEmpty()
   readonly qty: number;
   // @IsNotEmpty()

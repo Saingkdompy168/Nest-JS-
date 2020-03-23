@@ -1,3 +1,4 @@
+import { TransformInterceptor } from './../common/interceptors/transform.interceptor';
 import { Product } from './interfaces/product.interface';
 import { ProductsService } from './products.service';
 import {
@@ -10,12 +11,14 @@ import {
   HttpException,
   HttpStatus,
   UseFilters,
+  UseInterceptors,
 } from '@nestjs/common';
 import { CreatProductDTO } from './dto/create-product.dto';
-import { HttpExcepionFilter } from './common/filter/http-exception.filter';
+import { HttpExceptionFilter } from './common/filter/http-exception.filter';
 
 @Controller('products')
-@UseFilters(HttpExcepionFilter)
+@UseFilters(HttpExceptionFilter)
+@UseInterceptors(TransformInterceptor)
 export class ProductsController {
   constructor(private productsService: ProductsService) {}
   @Post()
@@ -35,6 +38,6 @@ export class ProductsController {
   @Delete(':id')
   async delete(@Param() param): Promise<Product[]> {
     return this.productsService.delete(param.id);
-    // throw new HttpException('Somthing went worng...!', HttpStatus.BAD_REQUEST);
+    // throw new HttpException('Something went wrong...!', HttpStatus.BAD_REQUEST);
   }
 }
